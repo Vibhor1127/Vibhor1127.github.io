@@ -1896,8 +1896,7 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:vibhor1127@gmail.com?subject=Hiring%20Inquiry%20%E2%80%94%20Vibhor%20Srivastava&body=Dear%20Vibhor%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity%20with%20you.%0A%0APlease%20find%20my%20details%20below%3A%0AName%3A%20%0AOrganisation%3A%20%0APhone%3A%20%0A%0ARole%2FOpportunity%3A%20%0A%0ALooking%20forward%20to%20connecting.%0A%0ARegards"
-      class="nav-cta" onclick="return true;">Hire Me</a>
+    <a href="#" class="nav-cta" onclick="openHireMail(); return false;">Hire Me</a>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
 
@@ -2187,7 +2186,7 @@
           <span class="proj-tag">MySQL</span>
           <span class="proj-tag blue">JPA</span>
         </div>
-        <a href="EveryDayHelp_Project.mp4#t=2" target="_blank" class="proj-demo">▶ Watch Demo →</a>
+        <a href="#" class="proj-demo">▶ Watch Demo →</a>
       </div>
 
       <div class="proj-card proj-card cursor-zone">
@@ -2205,7 +2204,7 @@
           <span class="proj-tag">JDBC</span>
           <span class="proj-tag blue">MySQL</span>
         </div>
-        <a href="20260426-1628-53.9463157.mp4#t=2" target="_blank" class="proj-demo">▶ Watch Demo →</a>
+        <a href="#" class="proj-demo">▶ Watch Demo →</a>
       </div>
     </div>
   </section>
@@ -2312,9 +2311,8 @@
         </div>
 
         <div class="social-row">
-          <a href="https://www.linkedin.com/in/vibhor-srivastava-9631b8299/" target="_blank"
-            class="social-btn">LinkedIn</a>
-          <a href="https://github.com/Vibhor1127" target="_blank" class="social-btn">GitHub</a>
+          <a href="https://linkedin.com" target="_blank" class="social-btn">LinkedIn</a>
+          <a href="https://github.com" target="_blank" class="social-btn">GitHub</a>
           <a href="mailto:vibhor1127@gmail.com" class="social-btn">Email</a>
         </div>
       </div>
@@ -2654,6 +2652,25 @@
       });
     });
 
+    /* ── mailto helper — works across all browsers ── */
+    function triggerMailto(href) {
+      const a = document.createElement('a');
+      a.href = href;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => document.body.removeChild(a), 500);
+    }
+
+    /* ── Hire Me button ── */
+    function openHireMail() {
+      const subject = encodeURIComponent('Hiring Enquiry — Vibhor Srivastava');
+      const body = encodeURIComponent(
+        `Dear Vibhor,\n\nI came across your portfolio and would like to discuss a potential opportunity with you.\n\nMy Details:\nName: \nOrganisation: \nPhone: \n\nRole/Opportunity: \n\nLooking forward to connecting.\n\nRegards`
+      );
+      triggerMailto(`mailto:vibhor1127@gmail.com?subject=${subject}&body=${body}`);
+    }
+
     /* ── Recruiter Mail Function ── */
     function sendRecruiterMail() {
       const name = document.getElementById('rf-name').value.trim();
@@ -2667,7 +2684,7 @@
       const body = encodeURIComponent(
         `Dear Vibhor,\n\nI came across your portfolio and would like to discuss a potential opportunity with you.\n\nMy Details:\nName: ${name}\nPhone: ${phone}\n\nMessage:\n${msg}\n\nLooking forward to connecting.\n\nRegards,\n${name}`
       );
-      window.location.href = `mailto:vibhor1127@gmail.com?subject=${subject}&body=${body}`;
+      triggerMailto(`mailto:vibhor1127@gmail.com?subject=${subject}&body=${body}`);
     }
   </script>
 </body>
